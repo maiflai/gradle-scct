@@ -41,13 +41,11 @@ configure(subprojects.findAll { it.name.endsWith('-tests') }) {
     def mainProject = project(":${project.name.minus('-tests')}")
     dependencies {
         testCompile mainProject
+        scoverage project(path: mainProject.path, configuration: 'scoverage')
     }
     scoverage {
         sources = mainProject.extensions.scoverage.sources
         dataDir = mainProject.extensions.scoverage.dataDir
         reportDir = mainProject.extensions.scoverage.reportDir
-    }
-    testScoverage {
-        classpath = mainProject.sourceSets.scoverage.runtimeClasspath + sourceSets.test.runtimeClasspath
     }
 }
