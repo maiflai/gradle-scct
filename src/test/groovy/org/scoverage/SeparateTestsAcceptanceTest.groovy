@@ -25,8 +25,8 @@ class SeparateTestsAcceptanceTest extends AcceptanceTestUtils {
         // ... and both statement and branch coverage is 100%
         def branchCoverage = coverage(reportDir(subprojectDir), CoverageType.Branch)
         def statementCoverage = coverage(reportDir(subprojectDir), CoverageType.Statement)
-        Assert.assertThat('Branch coverage should be 100%, was ' + branchCoverage, branchCoverage, Is.is(100.0))
-        Assert.assertThat('Statement coverage should be 100%, was ' + statementCoverage, statementCoverage, Is.is(100.0))
+        Assert.assertEquals(100.0, branchCoverage, 1.0)
+        Assert.assertEquals(100.0, statementCoverage, 1.0)
     }
 
     @Test
