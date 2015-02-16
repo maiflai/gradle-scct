@@ -35,6 +35,10 @@ subprojects {
         onlyIf { project.name.endsWith('-tests') }
     }
 
+    checkScoverage {
+        onlyIf { project.name.endsWith('-tests') }
+    }
+
 }
 
 configure(subprojects.findAll { it.name.endsWith('-tests') }) {
