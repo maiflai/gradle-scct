@@ -41,7 +41,7 @@ configure(subprojects.findAll { it.name.endsWith('-tests') }) {
     def mainProject = project(":${project.name.minus('-tests')}")
     dependencies {
         testCompile mainProject
-        scoverage project(path: mainProject.path, configuration: 'scoverage')
+        scoverage mainProject.configurations.scoverage.artifacts.files
     }
     scoverage {
         sources = mainProject.extensions.scoverage.sources
